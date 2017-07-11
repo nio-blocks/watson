@@ -1,15 +1,18 @@
-Example
-===========
+WatsonToneAnalyzer
+==================
 
-What does this block do?
+This block takes in text and sends it through Watson's tone analyzer API,
+returns an analysis of the emotions that could possibly be portrayed by the text.
 
 Properties
 --------------
-None
+- **username**(string): Bluemix account username
+- **password**(string): Bluemix account password
+- **data field**(expression): an expression that should evaluate to a string
 
 Dependencies
 ----------------
-None
+watson_developer_cloud
 
 Commands
 ----------------
@@ -21,4 +24,4 @@ Any list of signals.
 
 Output
 ---------
-Same list of signals as input.
+A signal with attributes of emotions and associated confidence values

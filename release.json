@@ -1,7 +1,7 @@
 {
-  "namespace/BlockName": {
-    "Language": "<language>",
-    "Reference": "github.com/<organization>/<repo>@v1.0.0",
+  "nio-blocks/watson_developer_cloud": {
+    "Language": "Python",
+    "Reference": "github.com/nio-blocks/watson_developer_cloud@v1.0.0",
     "Version": "1.0.0"
   }
 }
