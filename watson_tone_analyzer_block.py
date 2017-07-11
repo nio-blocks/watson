@@ -10,8 +10,7 @@ class WatsonToneAnalyzer(Block):
     username = Property(title='Username', default='')
     password = Property(title='Password', default='')
     data_attr = Property(title='Data Field',
-                         default='{{ $text }}',
-                         visible=False)
+                         default='{{ $text }}')
 
     def __init__(self):
         self.tone_analyzer = None
