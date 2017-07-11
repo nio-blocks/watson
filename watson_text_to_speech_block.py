@@ -9,6 +9,8 @@ from nio.properties import (VersionProperty, Property, FileProperty,
 
 class Voices(Enum):
     enUSLisa = "en-US_LisaVoice"
+    enUSMichael = "en-US_MichaelVoice"
+    enUSAllison = "en-US_AllisonVoice"
 
 
 class WatsonTextToSpeech(Block):
@@ -37,9 +39,10 @@ class WatsonTextToSpeech(Block):
                 filename = str(uuid.uuid4()) + ".wav"
                 with open(self.speech_file_location() + filename, 'wb') as audio_file:
                     audio_file.write(
-                        self.tts_engine.synthesize(text=self.data_attr(signal),
-                                                   voice=self.voice().value,
-                                                   accept="audio/wav"))
+                        self.tts_engine.synthesize(
+                            text=self.data_attr(signal),
+                            voice=self.voice().value,
+                            accept="audio/wav"))
             except Exception:
                 self.logger.exception("Failed to write speech file: ")
             else:
