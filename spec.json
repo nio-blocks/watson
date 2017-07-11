@@ -1,28 +1,30 @@
 {
-  "namespace/BlockName": {
+  "watson_developer_cloud/watson_tone_analyzer_block": {
     "Version": "1.0.0",
-    "Description": "Description of the block.",
-    "Output": "Description of block output(s).",
-    "Input": "Description of block input(s).",
+    "Description": "Takes a peice of text and runs it through Watson's tone analyzer, returning possible emotions of the text with associated confidence values.",
+    "Output": "A dictionary of emotions and confidence values",
+    "Input": "Any list of signals with text attributes",
     "Dependencies": [
-      "<List of required dependencies.>"
+      "watson_developer_cloud"
     ],
     "Commands": {
-      "<command1>": {
-        "description": "Required description of the command",
-        "type": "Optional type and other metadata with any key."
-      },
-      "<command2>": {
-        "description": "Required description of the command"
+      "none": {
+        "description": "",
+        "type": ""
       }
     },
     "Properties": {
-      "<property1>": {
-        "description": "Required description of the property"
+      "username": {
+        "default": "",
+        "description": "Bluemix account username"
       },
-      "<property2>": {
-        "default": "Optional metadata with any key.",
-        "description": "Required description of the property"
+      "password": {
+        "default": "",
+        "description": "Bluemix account password"
+      },
+      "Data Field": {
+        "default": "$text",
+        "description": "An expression that should evaluate to text"
       }
     }
   }

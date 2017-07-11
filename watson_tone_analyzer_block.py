@@ -6,7 +6,7 @@ from watson_developer_cloud import ToneAnalyzerV3
 
 class WatsonToneAnalyzer(Block):
 
-    version = VersionProperty('0.1.0')
+    version = VersionProperty('1.0.0')
     username = Property(title='Username', default='')
     password = Property(title='Password', default='')
     data_attr = Property(title='Data Field',
