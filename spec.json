@@ -1,5 +1,5 @@
 {
-  "watson_developer_cloud/watson_tone_analyzer_block": {
+  "watson/watson_tone_analyzer_block": {
     "Version": "1.0.0",
     "Description": "Takes a peice of text and runs it through Watson's tone analyzer, returning possible emotions of the text with associated confidence values.",
     "Output": "A dictionary of emotions and confidence values",
@@ -25,6 +25,43 @@
       "Data Field": {
         "default": "$text",
         "description": "An expression that should evaluate to text"
+      }
+    }
+  },
+  "watson/watson_text_to_speech_block": {
+    "Version": "1.0.0",
+    "Description": "This block takes in text and sends it through Watson's text to speech API, outputting a .wav audio file that is the speech of the given text.",
+    "Output": "A .wav file of the converted text in the specified directory.",
+    "Input": "Any list of signals",
+    "Dependencies": [
+      "watson_developer_cloud"
+    ],
+    "Commands": {
+      "none": {
+        "description": "",
+        "type": ""
+      }
+    },
+    "Properties": {
+      "username": {
+        "default": "",
+        "description": "Bluemix account username"
+      },
+      "password": {
+        "default": "",
+        "description": "Bluemix account password"
+      },
+      "Data Field": {
+        "default": "$text",
+        "description": "An expression that should evaluate to text"
+      },
+      "Directory to save audio files": {
+        "default": "etc/",
+        "description": "location to save converted speech files"
+      },
+      "Voice": {
+        "default": "EnglishUSAllison",
+        "description": "A selection of voices to choose from when synthesizing the input text"
       }
     }
   }
