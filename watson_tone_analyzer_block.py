@@ -1,14 +1,23 @@
-from nio.block.base import Block
-from nio.properties import VersionProperty, Property
-from nio.signal.base import Signal
 from watson_developer_cloud import ToneAnalyzerV3
+
+from nio.block.base import Block
+from nio.properties import (VersionProperty, Property, PropertyHolder,
+                            StringProperty, ObjectProperty)
+from nio.signal.base import Signal
+
+
+class AuthCreds(PropertyHolder):
+    username = StringProperty(title="Username", default="",
+                              allow_none=False)
+    password = StringProperty(title="Password", default="",
+                              allow_none=False)
 
 
 class WatsonToneAnalyzer(Block):
 
     version = VersionProperty('1.0.0')
-    username = Property(title='Username', default='')
-    password = Property(title='Password', default='')
+    creds = ObjectProperty(AuthCreds, title="Bluemix Credentials",
+                           default=AuthCreds())
     data_attr = Property(title='Data Field',
                          default='{{ $text }}')
 
@@ -16,11 +25,11 @@ class WatsonToneAnalyzer(Block):
         self.tone_analyzer = None
         super().__init__()
 
-    def start(self):
-        self.tone_analyzer = ToneAnalyzerV3(username=self.username(),
-                                            password=self.password(),
+    def configure(self, context):
+        super().configure(context)
+        self.tone_analyzer = ToneAnalyzerV3(username=self.creds().username(),
+                                            password=self.creds().password(),
                                             version='2016-05-19')
-        super().start()
 
     def process_signals(self, signals):
         new_signals = []
