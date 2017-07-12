@@ -19,6 +19,9 @@ class TestWatsonToneAnalyzer(NIOBlockTestCase):
             blk.process_signals([Signal({
                 "text": "patching attributes makes me FRUSTRATED"
             })])
+            patched_analyzer.tone.assert_called_once_with(
+                "patching attributes makes me FRUSTRATED"
+            )
 
         blk.stop()
         self.assert_num_signals_notified(1)
