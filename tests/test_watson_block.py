@@ -39,11 +39,11 @@ class TestWatsonTextToSpeechBlock(NIOBlockTestCase):
         blk.start()
         with patch.object(blk, "tts_engine") as patched_synthesizer:
             with patch("builtins.open") as patched_open:
-                patched_synthesizer.synthesize.side_effect = b'testdata'
                 blk.process_signals([Signal({
                     "text": "this is some sample text"
                 })])
-                # this should be called with defaults since no configuration was given
+                # this should be called with defaults since no configuration
+                # was given
                 patched_synthesizer.synthesize.assert_called_once_with(
                     accept='audio/wav',
                     text='this is some sample text',
