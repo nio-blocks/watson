@@ -168,7 +168,7 @@ WatsonSpeechToText
 ==================
 
 This block reads a .wav file and sends it through Watson's speech to text
-API, returning a dictionary of the recognized speech form the audio file,
+API, returning a dictionary of the recognized speech from the audio file,
 along with alternative interpretations with confidence values.
 
 Properties
