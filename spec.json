@@ -64,5 +64,34 @@
         "description": "A selection of voices to choose from when synthesizing the input text"
       }
     }
+  },
+  "watson/watson_speech_to_text_block": {
+    "Version": "1.0.0",
+    "Description": "This block reads a .wav file and sends it through Watson's speech to text API, returning a dictionary of the recognized speech form the audio file, along with alternative interpretations with confidence values.",
+    "Output": "A dictionary of the recognized speech form the audio file, along with alternative interpretations with confidence values.",
+    "Input": "A .wav file on the local machine.",
+    "Dependencies": [
+      "watson_developer_cloud"
+    ],
+    "Commands": {
+      "none": {
+        "description": "",
+        "type": ""
+      }
+    },
+    "Properties": {
+      "username": {
+        "default": "",
+        "description": "Bluemix account username"
+      },
+      "password": {
+        "default": "",
+        "description": "Bluemix account password"
+      },
+      "speech file location": {
+        "default": "etc/speech.wav",
+        "description": "speech file to read"
+      }
+    }
   }
 }
