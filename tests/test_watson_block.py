@@ -5,6 +5,7 @@ from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
 from ..watson_tone_analyzer_block import WatsonToneAnalyzer
 from ..watson_text_to_speech_block import WatsonTextToSpeech
+from ..watson_speech_to_text_block import WatsonSpeechToText
 
 
 class TestWatsonToneAnalyzer(NIOBlockTestCase):
@@ -52,3 +53,27 @@ class TestWatsonTextToSpeechBlock(NIOBlockTestCase):
 
         blk.stop()
         self.assert_num_signals_notified(0)
+
+
+class TestWatsonSpeechToTextBlock(NIOBlockTestCase):
+
+    def test_speech_to_text(self):
+        """Make sure that recognize is called"""
+        blk = WatsonSpeechToText()
+        self.configure_block(blk, {})
+        blk.start()
+        with patch.object(blk, "stt_engine") as patched_recognizer:
+            with patch("builtins.open") as patched_open:
+                blk.process_signals([Signal({
+                    "trigger": "this has triggered a file read"
+                })])
+                patched_recognizer.recognize.assert_called_once_with(
+                    audio="data",
+                    content_type="audio/wav")
+                self.assertTrue(patched_open.called)
+
+        blk.stop()
+        self.assert_num_signals_notified(1)
+        self.assertDictEqual(
+            self.last_notified[DEFAULT_TERMINAL][0].to_dict(),
+            {"frustration": "90%"})

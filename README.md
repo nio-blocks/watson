@@ -162,3 +162,56 @@ Any list of signals.
 Output
 ---------
 A .wav file of the converted text in the specified directory.
+
+
+WatsonSpeechToText
+==================
+
+This block reads a .wav file and sends it through Watson's speech to text
+API, returning a dictionary of the recognized speech form the audio file,
+along with alternative interpretations with confidence values.
+
+Properties
+--------------
+- **username**(string): Bluemix account username
+- **password**(string): Bluemix account password
+- **speech file location**(path): speech file to read
+
+Dependencies
+----------------
+watson_developer_cloud
+
+Commands
+----------------
+None
+
+Input
+-------
+A .wav file on the local machine.
+
+Output
+---------
+A dictionary of the recognized speech form the audio file,
+along with alternative interpretations with confidence values.
+
+sample output signal:
+
+```
+{
+  'results': [
+    {
+      'final': True,
+      'alternatives': [
+        {
+          'confidence': 0.972,
+          'transcript': 'hello world again '
+        }
+      ]
+    }
+  ],
+  'result_index': 0,
+  'warnings': [
+    'Unknown arguments: continuous.'
+  ]
+}
+```
