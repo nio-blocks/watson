@@ -191,7 +191,7 @@ A .wav file on the local machine.
 
 Output
 ---------
-A dictionary of the recognized speech form the audio file,
+A dictionary of the recognized speech from the audio file,
 along with alternative interpretations with confidence values.
 
 sample output signal:
