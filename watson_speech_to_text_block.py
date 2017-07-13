@@ -35,14 +35,15 @@ class WatsonSpeechToText(Block):
         new_signals = []
         for signal in signals:
             try:
-                with self.speech_file_location() as speech_file:
+                with self.speech_file_location(signal) as speech_file:
                     speech_data = speech_file.read()
                     text_dict = self.stt_engine.recognize(audio=speech_data,
                                                           content_type='audio/wav')
             except WatsonException:
                 self.logger.exception("Invalid Bluemix credentials: ")
             except Exception:
-                self.logger.exception("Failed to open speech file: ")
+                self.logger.exception("Failed to open speech file: {}"
+                                      .format(self.speech_file_location().file))
             else:
                 new_signals.append(Signal(text_dict))
                 self.logger.debug("Successfully read speech file '{}'"
