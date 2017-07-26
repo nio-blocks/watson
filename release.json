@@ -1,5 +1,15 @@
 {
-  "nio-blocks/watson": {
+  "nio/WatsonToneAnalyzer": {
+    "Language": "Python",
+    "Reference": "github.com/nio-blocks/watson@v1.0.0",
+    "Version": "1.0.0"
+  },
+  "nio/WatsonTextToSpeech": {
+    "Language": "Python",
+    "Reference": "github.com/nio-blocks/watson@v1.0.0",
+    "Version": "1.0.0"
+  },
+  "nio/WatsonSpeechToText": {
     "Language": "Python",
     "Reference": "github.com/nio-blocks/watson@v1.0.0",
     "Version": "1.0.0"
