@@ -1,5 +1,5 @@
 {
-  "watson/watson_tone_analyzer_block": {
+  "nio/WatsonToneAnalyzer": {
     "Version": "1.0.0",
     "Description": "Takes a peice of text and runs it through Watson's tone analyzer, returning possible emotions of the text with associated confidence values.",
     "Output": "A dictionary of emotions and confidence values",
@@ -28,7 +28,7 @@
       }
     }
   },
-  "watson/watson_text_to_speech_block": {
+  "nio/WatsonTextToSpeech": {
     "Version": "1.0.0",
     "Description": "This block takes in text and sends it through Watson's text to speech API, outputting a .wav audio file that is the speech of the given text.",
     "Output": "A .wav file of the converted text in the specified directory.",
@@ -65,7 +65,7 @@
       }
     }
   },
-  "watson/watson_speech_to_text_block": {
+  "nio/WatsonSpeechToText": {
     "Version": "1.0.0",
     "Description": "This block reads a .wav file and sends it through Watson's speech to text API, returning a dictionary of the recognized speech form the audio file, along with alternative interpretations with confidence values.",
     "Output": "A dictionary of the recognized speech form the audio file, along with alternative interpretations with confidence values.",
