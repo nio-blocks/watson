@@ -1,8 +1,9 @@
-from unittest.mock import patch, mock_open
+from unittest.mock import patch
 
 from nio.block.terminals import DEFAULT_TERMINAL
 from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
+
 from ..watson_tone_analyzer_block import WatsonToneAnalyzer
 from ..watson_text_to_speech_block import WatsonTextToSpeech
 from ..watson_speech_to_text_block import WatsonSpeechToText
@@ -65,9 +66,12 @@ class TestWatsonSpeechToTextBlock(NIOBlockTestCase):
         with patch.object(blk, "stt_engine") as patched_recognizer:
             with patch("nio.types.file.FileHolder") as patched_file_holder:
                 # this is the data the file read returns
-                patched_file_holder.return_value.__enter__.return_value.read.return_value = b'hello'
+                patched_file_holder.return_value.__enter__.return_value.\
+                    read.return_value = b'hello'
                 # this is the recognized data from the recognizer
-                patched_recognizer.recognize.return_value = {"recognized": "hello"}
+                patched_recognizer.recognize.return_value = {
+                    "recognized": "hello"
+                }
 
                 blk.process_signals([Signal({
                     "trigger": "this has triggered a file read"

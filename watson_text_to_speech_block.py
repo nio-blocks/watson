@@ -2,7 +2,7 @@ import uuid
 from enum import Enum
 from watson_developer_cloud import TextToSpeechV1, WatsonException
 
-from nio.block.base import Block
+from nio import TerminatorBlock
 from nio.properties import (VersionProperty, Property, FileProperty,
                             SelectProperty, PropertyHolder, StringProperty,
                             ObjectProperty)
@@ -21,7 +21,7 @@ class AuthCreds(PropertyHolder):
                               allow_none=False)
 
 
-class WatsonTextToSpeech(Block):
+class WatsonTextToSpeech(TerminatorBlock):
 
     version = VersionProperty('1.0.0')
     creds = ObjectProperty(AuthCreds, title="Bluemix Credentials",
@@ -54,7 +54,9 @@ class WatsonTextToSpeech(Block):
                 with open(self.speech_file_location().value + filename, 'wb') \
                         as audio_file:
                     audio_file.write(data)
-                self.logger.info("Wrote speech file to {} for input text "
-                                 "starting with '{}'".format(
-                    self.speech_file_location.value + filename,
-                    self.data_attr(signal)[:30]))
+                self.logger.info(
+                    "Wrote speech file to {} for input text "
+                    "starting with '{}'".format(
+                        self.speech_file_location.value + filename,
+                        self.data_attr(signal)[:30])
+                )

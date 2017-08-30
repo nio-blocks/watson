@@ -1,26 +1,115 @@
 {
   "nio/WatsonSpeechToText": {
-    "version": "0.0.1",
-    "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "version": "1.0.0",
+    "description": "This block reads a .wav file and sends it through Watson's speech to text API, returning a dictionary of the recognized speech from the audio file, along with alternative interpretations with confidence values.",
+    "properties": {
+      "creds": {
+        "title": "Bluemix Credentials",
+        "type": "ObjectType",
+        "description": "IBM Bluemix API credentials",
+        "default": {
+          "username": "",
+          "password": ""
+        }
+      },
+      "speech_file_location": {
+        "title": "Path to audio file (.wav)",
+        "type": "FileType",
+        "description": "Speech file to read.",
+        "default": "etc/speech.wav"
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "A dictionary of the recognized speech from the audio file, along with alternative interpretations with confidence values."
+      }
+    },
     "commands": {}
   },
   "nio/WatsonTextToSpeech": {
-    "version": "0.0.1",
-    "description": "",
-    "inputs": {},
+    "version": "1.0.0",
+    "description": "This block takes in text and sends it through Watson's text to speech API, outputting a .wav audio file that is the speech of the given text.",
+    "properties": {
+      "creds": {
+        "title": "Bluemix Credentials",
+        "type": "ObjectType",
+        "description": "IBM Bluemix API credentials",
+        "default": {
+          "username": "",
+          "password": ""
+        }
+      },
+      "data_attr": {
+        "title": "Text to Convert",
+        "type": "Type",
+        "description": "An expression that should evaluate to a string, to be converted into speech.",
+        "default": "{{ $text }}"
+      },
+      "speech_file_location": {
+        "title": "Directory to save audio files",
+        "type": "FileType",
+        "description": "Location to save converted speech files.",
+        "default": "etc/"
+      },
+      "voice": {
+        "title": "Voice",
+        "type": "SelectType",
+        "description": "Select which voice to use when sysnthesizing input text.",
+        "default": "en-US_LisaVoice"
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
     "outputs": {},
-    "properties": {},
     "commands": {}
   },
   "nio/WatsonToneAnalyzer": {
-    "version": "0.0.1",
-    "description": "",
-    "inputs": {},
-    "outputs": {},
-    "properties": {},
+    "version": "1.0.0",
+    "description": "This block takes in text and sends it through Watson's tone analyzer API and returns an analysis of the emotions that could possibly be portrayed by the text.",
+    "properties": {
+      "creds": {
+        "title": "Bluemix Credentials",
+        "type": "ObjectType",
+        "description": "IBM Bluemix API credentials",
+        "default": {
+          "username": "",
+          "password": ""
+        }
+      },
+      "data_attr": {
+        "title": "Data Field",
+        "type": "Type",
+        "description": "An expression that should evaluate to a string which will be analyzed for the tone.",
+        "default": "{{ $text }}"
+      },
+      "enrich": {
+        "title": "Signal Enrichment",
+        "type": "ObjectType",
+        "description": "*enrich_field:* The attribute on the signal to store the results from this block. If this is empty, the results will be merged onto the incoming signal. This is the default operation. Having this field allows a block to 'save' the results of an operation to a single field on an incoming signal and notify the enriched signal.  *results field:* The attribute on the signal to store the results from this block. If this is empty, the results will be merged onto the incoming signal. This is the default operation. Having this field allows a block to save the results of an operation to a single field on an incoming signal and notify the enriched signal.",
+        "default": {
+          "enrich_field": "",
+          "exclude_existing": true
+        }
+      }
+    },
+    "inputs": {
+      "default": {
+        "description": "Any list of signals."
+      }
+    },
+    "outputs": {
+      "default": {
+        "description": "A signal with attributes of emotions and associated confidence values."
+      }
+    },
     "commands": {}
   }
 }
