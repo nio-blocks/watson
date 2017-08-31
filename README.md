@@ -1,45 +1,107 @@
-Watson
-======
+WatsonSpeechToText
+==================
+This block reads a .wav file and sends it through Watson's speech to text API, returning a dictionary of the recognized speech from the audio file, along with alternative interpretations with confidence values.
 
-This is a group of blocks that works with several of Watson's API services.
-To use these blocks, you will need to have a Bluemix account and
-set up a project for yourself: [Bluemix Account Setup](https://console.bluemix.net/registration/?)
+Properties
+----------
+- **creds**: IBM Bluemix API credentials
+- **speech_file_location**: Speech file to read.
 
-For each service that you want to use you will need to set the service in bluemix,
-which will give you a unique username and password for that service. These
-will be the username and password you enter into the block.
+Inputs
+------
+- **default**: Any list of signals.
 
+Outputs
+-------
+- **default**: A dictionary of the recognized speech from the audio file, along with alternative interpretations with confidence values.
+
+Commands
+--------
+None
+
+Dependencies
+------------
+watson_developer_cloud
+
+Output Example
+--------------
+Sample output signal:
+```
+{
+  'results': [
+    {
+      'final': True,
+      'alternatives': [
+        {
+          'confidence': 0.972,
+          'transcript': 'hello world again '
+        }
+      ]
+    }
+  ],
+  'result_index': 0,
+  'warnings': [
+    'Unknown arguments: continuous.'
+  ]
+}
+```
+
+WatsonTextToSpeech
+==================
+This block takes in text and sends it through Watson's text to speech API, outputting a .wav audio file that is the speech of the given text.
+
+Properties
+----------
+- **creds**: IBM Bluemix API credentials
+- **data_attr**: An expression that should evaluate to a string, to be converted into speech.
+- **speech_file_location**: Location to save converted speech files.
+- **voice**: Select which voice to use when sysnthesizing input text.
+
+Inputs
+------
+- **default**: Any list of signals.
+
+Outputs
+-------
+None
+
+Commands
+--------
+None
+
+Dependencies
+------------
+watson_developer_cloud
 
 WatsonToneAnalyzer
 ==================
-
-This block takes in text and sends it through Watson's tone analyzer API and
-returns an analysis of the emotions that could possibly be portrayed by the text.
+This block takes in text and sends it through Watson's tone analyzer API and returns an analysis of the emotions that could possibly be portrayed by the text.
 
 Properties
---------------
-- **username**(string): Bluemix account username
-- **password**(string): Bluemix account password
-- **data field**(expression): an expression that should evaluate to a string
+----------
+- **creds**: IBM Bluemix API credentials
+- **data_attr**: An expression that should evaluate to a string which will be analyzed for the tone.
+- **enrich**: *enrich_field:* The attribute on the signal to store the results from this block. If this is empty, the results will be merged onto the incoming signal. This is the default operation. Having this field allows a block to 'save' the results of an operation to a single field on an incoming signal and notify the enriched signal.  *results field:* The attribute on the signal to store the results from this block. If this is empty, the results will be merged onto the incoming signal. This is the default operation. Having this field allows a block to save the results of an operation to a single field on an incoming signal and notify the enriched signal.
 
-Dependencies
-----------------
-watson_developer_cloud
+Inputs
+------
+- **default**: Any list of signals.
+
+Outputs
+-------
+- **default**: A signal with attributes of emotions and associated confidence values.
 
 Commands
-----------------
+--------
 None
 
-Input
--------
-Any list of signals.
+Dependencies
+------------
+watson_developer_cloud
 
-Output
----------
-A signal with attributes of emotions and associated confidence values
-
+Output Example
+--------------
 Sample output signal:
-
 ```
 {
   'document_tone': {
@@ -132,86 +194,3 @@ Sample output signal:
 }
 ```
 
-
-WatsonTextToSpeech
-==================
-
-This block takes in text and sends it through Watson's text to speech API,
-outputting a .wav audio file that is the speech of the given text.
-
-Properties
---------------
-- **username**(string): Bluemix account username
-- **password**(string): Bluemix account password
-- **directory to save audio files**(path): location to save converted speech files
-- **text to convert**(expression): an expression that should evaluate to a string, to be converted into speech
-- **voice**(select): select which voice to use when sysnthesizing input text
-
-Dependencies
-----------------
-watson_developer_cloud
-
-Commands
-----------------
-None
-
-Input
--------
-Any list of signals.
-
-Output
----------
-A .wav file of the converted text in the specified directory.
-
-
-WatsonSpeechToText
-==================
-
-This block reads a .wav file and sends it through Watson's speech to text
-API, returning a dictionary of the recognized speech from the audio file,
-along with alternative interpretations with confidence values.
-
-Properties
---------------
-- **username**(string): Bluemix account username
-- **password**(string): Bluemix account password
-- **speech file location**(path): speech file to read
-
-Dependencies
-----------------
-watson_developer_cloud
-
-Commands
-----------------
-None
-
-Input
--------
-A .wav file on the local machine.
-
-Output
----------
-A dictionary of the recognized speech from the audio file,
-along with alternative interpretations with confidence values.
-
-sample output signal:
-
-```
-{
-  'results': [
-    {
-      'final': True,
-      'alternatives': [
-        {
-          'confidence': 0.972,
-          'transcript': 'hello world again '
-        }
-      ]
-    }
-  ],
-  'result_index': 0,
-  'warnings': [
-    'Unknown arguments: continuous.'
-  ]
-}
-```

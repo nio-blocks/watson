@@ -1,17 +1,17 @@
 {
   "nio/WatsonSpeechToText": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/watson.git"
+    "url": "git://github.com/nio-blocks/watson.git",
+    "version": "1.0.0"
   },
   "nio/WatsonTextToSpeech": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/watson.git"
+    "url": "git://github.com/nio-blocks/watson.git",
+    "version": "1.0.0"
   },
   "nio/WatsonToneAnalyzer": {
     "language": "Python",
-    "version": "0.0.1",
-    "url": "git://github.com/nio-blocks/watson.git"
+    "url": "git://github.com/nio-blocks/watson.git",
+    "version": "1.0.0"
   }
 }
