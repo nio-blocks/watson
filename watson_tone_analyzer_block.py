@@ -15,7 +15,7 @@ class AuthCreds(PropertyHolder):
 
 class WatsonToneAnalyzer(EnrichSignals, Block):
 
-    version = VersionProperty('1.0.0')
+    version = VersionProperty("1.0.0")
     creds = ObjectProperty(AuthCreds, title="Bluemix Credentials",
                            default=AuthCreds())
     data_attr = Property(title='Data Field',
