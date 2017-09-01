@@ -23,7 +23,7 @@ class AuthCreds(PropertyHolder):
 
 class WatsonTextToSpeech(TerminatorBlock):
 
-    version = VersionProperty('1.0.0')
+    version = VersionProperty("1.0.0")
     creds = ObjectProperty(AuthCreds, title="Bluemix Credentials",
                            default=AuthCreds())
     data_attr = Property(title='Text to Convert',
