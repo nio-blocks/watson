@@ -2,6 +2,9 @@
   "nio/WatsonSpeechToText": {
     "version": "1.0.0",
     "description": "This block reads a .wav file and sends it through Watson's speech to text API, returning a dictionary of the recognized speech from the audio file, along with alternative interpretations with confidence values.",
+    "categories": [
+      "Machine Learning"
+    ],
     "properties": {
       "creds": {
         "title": "Bluemix Credentials",
@@ -34,6 +37,9 @@
   "nio/WatsonTextToSpeech": {
     "version": "1.0.0",
     "description": "This block takes in text and sends it through Watson's text to speech API, outputting a .wav audio file that is the speech of the given text.",
+    "categories": [
+      "Machine Learning"
+    ],
     "properties": {
       "creds": {
         "title": "Bluemix Credentials",
@@ -74,6 +80,9 @@
   "nio/WatsonToneAnalyzer": {
     "version": "1.0.0",
     "description": "This block takes in text and sends it through Watson's tone analyzer API and returns an analysis of the emotions that could possibly be portrayed by the text.",
+    "categories": [
+      "Machine Learning"
+    ],
     "properties": {
       "creds": {
         "title": "Bluemix Credentials",
