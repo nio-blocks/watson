@@ -29,12 +29,12 @@ class WatsonToneAnalyzer(EnrichSignals, Block):
         super().configure(context)
         self.tone_analyzer = ToneAnalyzerV3(username=self.creds().username(),
                                             password=self.creds().password(),
-                                            version='2016-05-19')
+                                            version='2017-09-21')
 
     def process_signals(self, signals):
         new_signals = []
         for signal in signals:
             out_sig = self.get_output_signal(
-                self.tone_analyzer.tone(self.data_attr(signal)), signal)
+                self.tone_analyzer.tone_chat(self.data_attr(signal)), signal)
             new_signals.append(out_sig)
         self.notify_signals(new_signals)
