@@ -17,11 +17,11 @@ class TestWatsonToneAnalyzer(NIOBlockTestCase):
         self.configure_block(blk, {})
         blk.start()
         with patch.object(blk, "tone_analyzer") as patched_analyzer:
-            patched_analyzer.tone.return_value = {"frustration": "90%"}
+            patched_analyzer.tone_chat.return_value = {"frustration": "90%"}
             blk.process_signals([Signal({
                 "text": "patching attributes makes me FRUSTRATED"
             })])
-            patched_analyzer.tone.assert_called_once_with(
+            patched_analyzer.tone_chat.assert_called_once_with(
                 "patching attributes makes me FRUSTRATED"
             )
 
