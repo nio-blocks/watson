@@ -8,9 +8,11 @@ from nio.block.mixins.enrich.enrich_signals import EnrichSignals
 
 class AuthCreds(PropertyHolder):
     username = StringProperty(title="Username", default="",
-                              allow_none=False)
+                              allow_none=False,
+                              order=0)
     password = StringProperty(title="Password", default="",
-                              allow_none=False)
+                              allow_none=False,
+                              order=1)
 
 
 class WatsonToneAnalyzer(EnrichSignals, Block):
