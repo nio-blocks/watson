@@ -8,9 +8,11 @@ from nio.properties import (VersionProperty, ObjectProperty, FileProperty,
 
 class AuthCreds(PropertyHolder):
     username = StringProperty(title="Username", default="",
-                              allow_none=False)
+                              allow_none=False,
+                              order=0)
     password = StringProperty(title="Password", default="",
-                              allow_none=False)
+                              allow_none=False,
+                              order=1)
 
 
 class WatsonSpeechToText(Block):
